@@ -7,17 +7,7 @@ const { logger, logEvents } = require('./middleware/logger')
 const errorHandler = require('./middleware/errorHandler')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
-const corsOptions = {
-    origin: function (origin, callback) {
-      if (allowedOrigins.includes(origin) || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    credentials: true,
-    optionsSuccessStatus: 200
-  };
+const corsOptions = require('./config/corsOptions')
 const connectDB = require('./config/dbConn')
 const mongoose = require('mongoose')
 const PORT = process.env.PORT || 3500
